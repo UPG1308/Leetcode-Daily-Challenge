@@ -1,0 +1,17 @@
+class Solution {
+    public List<Integer> sequentialDigits(int low, int high) {
+        String s = "1234567890";
+        List<Integer> list = new ArrayList<>();
+        int startDigit = (int) (Math.log(low)/Math.log(10)) + 1;
+        int endDigit = (int) (Math.log(high)/Math.log(10)) + 1;
+
+        for(int i = startDigit; i <= endDigit; i++){
+            int startD = 0, endD = i;
+            while(endD < 10){
+                int val = Integer.valueOf(s.substring(startD++, endD++));
+                if(val >= low && val <= high) list.add(val);
+            }
+        }
+        return list;
+    }
+}
